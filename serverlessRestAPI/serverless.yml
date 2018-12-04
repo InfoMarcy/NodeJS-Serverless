@@ -1,0 +1,18 @@
+type: rest-api-app
+version: 0.0.1
+components:
+  myFunction:
+    type: aws-lambda
+    inputs:
+      memory: 512
+      timeout: 10
+      handler: handler.app
+      root: ./app
+  myApi:
+    type: rest-api
+    inputs:
+      gateway: aws-apigateway
+      routes:
+        /hello:
+          get:
+            function: ${myFunction}

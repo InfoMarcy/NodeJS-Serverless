@@ -1,0 +1,28 @@
+# Welcome to Serverless!
+service: serverless-rest-api-app # NOTE: update this with your service name
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+
+  home:
+    handler: handler.home
+    events:
+      - http:
+          path: home
+          method: get
+
+  bancadigital:
+    handler: handler.bancadigital
+    events:
+      - http:
+          path: bancadigital/{id}
+          method: get
+  identificacion:
+    handler: handler.identificacion
+    events:
+      - http:
+          path: identificacion
+          method: post
+          

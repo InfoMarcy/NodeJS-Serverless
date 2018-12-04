@@ -1,0 +1,131 @@
+{
+  "$": {
+    "serviceId": "nx5ujcy5im"
+  },
+  "rest-api-app": {
+    "instanceId": "nx5ujcy5im-wecvd1xu"
+  },
+  "rest-api-app:myFunction": {
+    "instanceId": "nx5ujcy5im-hcijz5t3",
+    "type": "aws-lambda",
+    "internallyManaged": false,
+    "rootPath": "../../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-lambda",
+    "inputs": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "handler.app",
+      "root": "./app",
+      "name": "func-nx5ujcy5im-hcijz5t3"
+    },
+    "state": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "handler.app",
+      "root": "./app",
+      "name": "func-nx5ujcy5im-hcijz5t3",
+      "arn": "arn:aws:lambda:us-east-1:164754205930:function:func-nx5ujcy5im-hcijz5t3",
+      "roleArn": "arn:aws:iam::164754205930:role/func-nx5ujcy5im-hcijz5t3-execution-role",
+      "defaultRole": {
+        "arn": "arn:aws:iam::164754205930:role/func-nx5ujcy5im-hcijz5t3-execution-role",
+        "service": "lambda.amazonaws.com",
+        "policy": {
+          "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        },
+        "name": "func-nx5ujcy5im-hcijz5t3-execution-role"
+      }
+    }
+  },
+  "rest-api-app:myApi": {
+    "instanceId": "nx5ujcy5im-e2w4ywgf",
+    "type": "rest-api",
+    "internallyManaged": false,
+    "rootPath": "../../../../../../usr/local/lib/node_modules/serverless-components/registry/rest-api",
+    "inputs": {
+      "gateway": "aws-apigateway",
+      "routes": {
+        "/hello": {
+          "get": {
+            "function": {
+              "arn": "arn:aws:lambda:us-east-1:164754205930:function:func-nx5ujcy5im-hcijz5t3",
+              "roleArn": "arn:aws:iam::164754205930:role/func-nx5ujcy5im-hcijz5t3-execution-role"
+            }
+          }
+        }
+      },
+      "name": "api-nx5ujcy5im-e2w4ywgf"
+    },
+    "state": {
+      "roleArn": "arn:aws:iam::164754205930:role/api-nx5ujcy5im-e2w4ywgf-iam-role-nx5ujcy5im-e2w4ywgf",
+      "url": "https://8r8i5vx4y4.execute-api.us-east-1.amazonaws.com/dev/"
+    }
+  },
+  "rest-api-app:myFunction:defaultRole": {
+    "instanceId": "nx5ujcy5im-syvlvodi",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "func-nx5ujcy5im-hcijz5t3-execution-role",
+      "service": "lambda.amazonaws.com"
+    },
+    "state": {
+      "arn": "arn:aws:iam::164754205930:role/func-nx5ujcy5im-hcijz5t3-execution-role",
+      "service": "lambda.amazonaws.com",
+      "policy": {
+        "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "name": "func-nx5ujcy5im-hcijz5t3-execution-role"
+    }
+  },
+  "rest-api-app:myApi:iam": {
+    "instanceId": "nx5ujcy5im-6jxmqoy2",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "api-nx5ujcy5im-e2w4ywgf-iam-role-nx5ujcy5im-e2w4ywgf",
+      "service": "apigateway.amazonaws.com"
+    },
+    "state": {
+      "arn": "arn:aws:iam::164754205930:role/api-nx5ujcy5im-e2w4ywgf-iam-role-nx5ujcy5im-e2w4ywgf",
+      "service": "apigateway.amazonaws.com",
+      "policy": {
+        "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "name": "api-nx5ujcy5im-e2w4ywgf-iam-role-nx5ujcy5im-e2w4ywgf"
+    }
+  },
+  "rest-api-app:myApi:apig": {
+    "instanceId": "nx5ujcy5im-0k45qqck",
+    "type": "aws-apigateway",
+    "internallyManaged": true,
+    "rootPath": "../../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-apigateway",
+    "inputs": {
+      "name": "api-nx5ujcy5im-e2w4ywgf",
+      "roleArn": "arn:aws:iam::164754205930:role/api-nx5ujcy5im-e2w4ywgf-iam-role-nx5ujcy5im-e2w4ywgf",
+      "routes": {
+        "hello": {
+          "GET": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:164754205930:function:func-nx5ujcy5im-hcijz5t3"
+          }
+        }
+      }
+    },
+    "state": {
+      "name": "api-nx5ujcy5im-e2w4ywgf",
+      "roleArn": "arn:aws:iam::164754205930:role/api-nx5ujcy5im-e2w4ywgf-iam-role-nx5ujcy5im-e2w4ywgf",
+      "routes": {
+        "hello": {
+          "GET": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:164754205930:function:func-nx5ujcy5im-hcijz5t3"
+          }
+        }
+      },
+      "id": "8r8i5vx4y4",
+      "url": "https://8r8i5vx4y4.execute-api.us-east-1.amazonaws.com/dev/",
+      "urls": [
+        "https://8r8i5vx4y4.execute-api.us-east-1.amazonaws.com/dev/hello"
+      ]
+    }
+  }
+}
