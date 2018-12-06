@@ -1,0 +1,63 @@
+service: lambda-demo # NOTE: update this with your service name
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+  profile: default
+
+iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+        - "dynamodb:GetItem"
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+      Resource: 
+        -"arn:aws:dynamodb:${self:provider.region}:*:table/bancadigital_tb"
+
+functions:
+  bancadigital:
+    handler: handler.bancadigital
+    events:
+      - http:
+          path: bancadigital/v1/home
+          method: get
+  saveItem:
+    handler: handler.saveItem
+    events:
+      - http:
+          path: bancadigital/v1/save
+          method: get
+
+  getItem:
+    handler: handler.getItem
+    events:
+      - http:
+          path: bancadigital/v1/get/{id}
+          method: get
+
+
+resources:
+  Resources:
+    ImagesTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: "S"
+        KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: bancadigital_tb
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
+
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline

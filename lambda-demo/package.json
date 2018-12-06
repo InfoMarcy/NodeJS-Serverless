@@ -1,5 +1,5 @@
 {
-  "name": "serverless-rest-api-app",
+  "name": "lambda-demo",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.31.3"
   }
 }

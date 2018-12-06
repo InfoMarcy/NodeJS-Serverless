@@ -1,0 +1,73 @@
+service: rest-web-api
+custom:
+  secrets: ${file(secrets.json)}
+provider:
+  name: aws
+  runtime: nodejs8.10
+  timeout: 30
+  stage: ${self:custom.secrets.NODE_ENV}
+  profile: default
+  environment: 
+    NODE_ENV: ${self:custom.secrets.NODE_ENV},
+    ITEMS_DYNAMO_TABLE: ${self:custom.secrets.ITEMS_DYNAMO_TABLE}
+
+# you can add statements to the Lambda function's IAM Role here
+iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:GetItem"
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+      Resource: 
+        -"arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.secrets.ITEMS_DYNAMO_TABLE}"
+functions:
+  saveItem:
+    handler: handler.saveItem
+    events:
+      - http:
+          path: item
+          method: post
+  getItem:
+    handler: handler.getItem
+    events:
+      - http:
+          path: item/{id}
+          method: get
+  deleteItem:
+    handler: handler.deleteItem
+    events:
+        - http:
+            path: item/{id}
+            method: delete
+  updateItem:
+    handler: handler.updateItem
+    events:
+      - http:
+          path: item/{id}
+          method: put
+
+          
+
+resources:
+  Resources:
+    ImagesTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: "S"
+        KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName:  ${self:custom.secrets.ITEMS_DYNAMO_TABLE}
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
+
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline

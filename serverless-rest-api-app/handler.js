@@ -1,7 +1,8 @@
 'use strict';
+//const uuidv1 = require(uuid/v1);
 
 module.exports.home = async (event, context) => {
-
+  console.log('Hello has been triggered');
   //hello?name=marcy
   const name = event.queryStringParameters && event.queryStringParameters.name
 
@@ -48,6 +49,7 @@ module.exports.identificacion = async (event, context) => {
         "codigoOperacion": "0",
         "descripcion": "Operacion exitosa",
         "folio": "119201792614241160"
+        //"id" : uuidv1()
       
     }),
   };

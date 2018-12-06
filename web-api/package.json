@@ -1,5 +1,5 @@
 {
-  "name": "serverless-rest-api-app",
+  "name": "web-api",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
@@ -9,6 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "serverless-dynamodb-local": "^0.2.35",
+    "serverless-offline": "^3.31.3"
+  },
   "dependencies": {
     "uuid": "^3.3.2"
   }
