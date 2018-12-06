@@ -70,7 +70,7 @@ const user = await User.findByIdAndRemove(event.pathParameters.id);
    } else {
 
    let message = {
-   "message": `El Usuario con el id proporcionado ha sido eliminado: ${user._id} `,
+   "message": `El Usuario: ${user.username} con el id: ${user._id} ha sido eliminado`,
     user
     }; 
     return createResponse(200, message);
