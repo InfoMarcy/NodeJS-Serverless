@@ -4,9 +4,6 @@
 const { User } = require('./models/user');
 require('./db')();
 
-// get the config file where we store the database connection
-require('dotenv').config({ path: './variables.env' });
-
 function createResponse(statusCode, message){
   return {
     statusCode: statusCode,
@@ -34,10 +31,13 @@ module.exports.getOne = async (event) => {
    
 };
 
-
 // get a list of users
 module.exports.getAll = async (event) => {
-  const users = await User.find().sort("nombre");;
+  const users = await User.find().sort("nombre");
+  
+  if (!users){
+    return createResponse(404, 'No hay usarios disponible por el momento, gracias!!!');
+   } 
     return createResponse(200, users);
 };
 
@@ -58,7 +58,6 @@ module.exports.update = async (event) => {
   return createResponse(200, user);
 
 };
-
 
 // get a record from the database
 module.exports.delete = async (event) => {
