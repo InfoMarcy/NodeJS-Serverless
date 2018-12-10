@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 module.exports = function() {
-  const db = 'mongodb://localhost/users_db';
+  const db = process.env.DB;
   //Connect to MongoDb
   mongoose
     .connect(db)
