@@ -1,4 +1,4 @@
-service: lambda-rest-api-mongodb-app
+service: nodejs-json-app
 
 custom:
   secrets: ${file(secrets.json)}
@@ -11,7 +11,6 @@ provider:
   stage: dev # setting the env stage to dev, this will be visible in the routes
   region: us-east-1
   environment:
-    JWT_SECRET: ${self:custom.secrets.JWT_SECRET}
     DB: ${self:custom.secrets.DB}
 
 functions: # add 4 functions for CRUD
@@ -50,8 +49,40 @@ functions: # add 4 functions for CRUD
          path: empleados/{id} # path will be domain.name.com/dev/notes/1
          method: delete
          cors: true
+#AUTH
+  verify-token:
+    handler: auth/VerifyToken.auth
+
+  login:
+    handler: auth/login.login
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+
+  register:
+    handler: auth/register.register
+    events:
+      - http:
+          path: register
+          method: post
+          cors: true
+  me:
+    handler: auth/AuthHandler.me
+    events:
+      - http:
+          path: me
+          method: get
+          cors: true
+          authorizer: verify-token
+
+  #getUsers:
+  #  handler: user/UserHandler.getUsers
+   # events:
+   #   - http:
+   ##       path: users
+   #       method: get
+   #       cors: true
 plugins:
 - serverless-offline # adding the plugin to be able to run the offline emulation
-
-#mongodb database 
-#https://mlab.com/databases/nodejs_lambda_db#stats
