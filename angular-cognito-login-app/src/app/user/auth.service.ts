@@ -11,8 +11,8 @@ import { User } from './user.model';
 //Use case 1. Registering a user with the application
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser, AuthenticationDetails, CognitoUserSession } from 'amazon-cognito-identity-js';
 const  POOL_DATA = {
-  UserPoolId : 'us-east-1_N8WBFPJfg', // Your user pool id here
-  ClientId : '659qcum8jub18udh1fiu6bch95' // Your client id here
+  UserPoolId : '....', // Your user pool id here
+  ClientId : '....' // Your client id here
 };
 const userPool = new CognitoUserPool(POOL_DATA);
 
