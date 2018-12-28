@@ -1,0 +1,31 @@
+[# 2018-12-27 13:18:17,704 INFO 14439 default Could not connect  to mongodb://localhost/baja-usuarios-gitlab.. { MongoNetworkError: failed to connect to server [localhost:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]
+    at Pool.<anonymous> (/Users/desarrolladorios1/Desktop/dev/NodejsSandbox/baja-usuarios-gitlab-node-app/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+    at Pool.emit (events.js:189:13)
+    at Connection.<anonymous> (/Users/desarrolladorios1/Desktop/dev/NodejsSandbox/baja-usuarios-gitlab-node-app/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+    at Object.onceWrapper (events.js:277:13)
+    at Connection.emit (events.js:189:13)
+    at Socket.<anonymous> (/Users/desarrolladorios1/Desktop/dev/NodejsSandbox/baja-usuarios-gitlab-node-app/node_modules/mongodb-core/lib/connection/connection.js:246:50)
+    at Object.onceWrapper (events.js:277:13)
+    at Socket.emit (events.js:189:13)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+    at process.internalTickCallback (internal/process/next_tick.js:72:19)
+  name: 'MongoNetworkError',
+  errorLabels: [ 'TransientTransactionError' ],
+  [Symbol(mongoErrorContextSymbol)]: {} } #]
+[# 2018-12-27 13:18:19,157 INFO 14447 default Could not connect  to mongodb://localhost/baja-usuarios-gitlab.. { MongoNetworkError: failed to connect to server [localhost:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]
+    at Pool.<anonymous> (/Users/desarrolladorios1/Desktop/dev/NodejsSandbox/baja-usuarios-gitlab-node-app/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+    at Pool.emit (events.js:189:13)
+    at Connection.<anonymous> (/Users/desarrolladorios1/Desktop/dev/NodejsSandbox/baja-usuarios-gitlab-node-app/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+    at Object.onceWrapper (events.js:277:13)
+    at Connection.emit (events.js:189:13)
+    at Socket.<anonymous> (/Users/desarrolladorios1/Desktop/dev/NodejsSandbox/baja-usuarios-gitlab-node-app/node_modules/mongodb-core/lib/connection/connection.js:246:50)
+    at Object.onceWrapper (events.js:277:13)
+    at Socket.emit (events.js:189:13)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+    at process.internalTickCallback (internal/process/next_tick.js:72:19)
+  name: 'MongoNetworkError',
+  errorLabels: [ 'TransientTransactionError' ],
+  [Symbol(mongoErrorContextSymbol)]: {} } #]
+[# 2018-12-27 13:19:28,551 INFO 14512 default Connected to mongodb://localhost/baja-usuarios-gitlab.... #]

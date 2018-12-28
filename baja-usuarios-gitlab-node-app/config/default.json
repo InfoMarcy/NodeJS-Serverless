@@ -1,0 +1,4 @@
+{
+    "db": "mongodb://localhost/baja-usuarios-gitlab",
+    "private_token" : "12345"
+}
