@@ -3,8 +3,8 @@ const express = require("express");
 const router = express.Router();
 
 const pathUrl = "/api/v4/users";
-const hostUrl = "10.51.59.27";
-const gitToken = "nSYRKtL67WAJc49kRWa8";
+const hostUrl = "";
+const gitToken = "";
 
 //working with log files
 const log4js = require('log4js');
