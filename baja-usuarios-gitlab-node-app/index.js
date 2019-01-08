@@ -3,7 +3,6 @@ const express = require("express");
 const app = express(); // call the express function which return an object
 const config = require('config');
 
-
 require("./controller/logsController")();
 require("./controller/routesController")(app);
 

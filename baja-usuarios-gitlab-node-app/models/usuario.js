@@ -1,17 +1,30 @@
-const fs = require('fs');
-const path = require('path');
-const  obtenerUsuarios = require('../middleware/obtenerUsuariosFromFile');
+const obtenerDatosFromFile = require("../middleware/obtenerDatosFromFile");
 
 module.exports = class Usuario {
-    constructor(username, password, numEmpleado){
-     this.username = username;
-     this.password = password;
-     this.numEmpleado = numEmpleado;
-    }
+  constructor(username, password, numEmpleado) {
+    this.username = username;
+    this.password = password;
+    this.numEmpleado = numEmpleado;
+  }
 
-    // method to get all records from the class
-    static getAll(cb){
-      obtenerUsuarios(cb);
-    }
-}
+  // method to get all records from the class
+  static getAll(cb) {
+    obtenerDatosFromFile(cb, "usuarios.json");
+  }
 
+  static getAllIps(cb) {
+    obtenerDatosFromFile(cb, "ips.json");
+  }
+
+  static getUsuariosBloqueadosPorIp(cb) {
+    obtenerDatosFromFile(cb, "bloqueoIp.json");
+  }
+
+  static getUsuariosBloqueadosPorUsername(cb) {
+    obtenerDatosFromFile(cb, "bloqueoUsuario.json");
+  }
+
+  static getNumIntentosPorIp(cb) {
+    obtenerDatosFromFile(cb, "numIntentosIp.json");
+  }
+};

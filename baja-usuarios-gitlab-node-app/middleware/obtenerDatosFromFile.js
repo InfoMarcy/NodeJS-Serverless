@@ -2,12 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 
-module.exports = function(cb) {
+module.exports = function(cb, ruta) {
   // get the path of the json file that we are going to user
   const p = path.join(
     path.dirname(process.mainModule.filename),
     "db",
-    "usuarios.json"
+    ruta
   );
 
   // read the file

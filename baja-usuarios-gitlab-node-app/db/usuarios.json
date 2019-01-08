@@ -1,12 +1,14 @@
 [
   {
-    "username": "usuario1",
+    "username": "usuarioCyaal",
     "password": "f810bba14ee5ba6c57d7242e2d60d8b4954f826731c4cc3de112bbb8127fffde",
-    "token" : ""
+    "token": "",
+    "date": "2018-12-04 13:09:52"
   },
   {
-    "username": "usuario2",
+    "username": "usuarioMonitoreo",
     "password": "f810bba14ee5ba6c57d7242e2d60d8b4954f826731c4cc3de112bbb8127fffde",
-    "token" : ""
+    "token": "",
+    "date": "2018-12-04 13:09:52"
   }
 ]

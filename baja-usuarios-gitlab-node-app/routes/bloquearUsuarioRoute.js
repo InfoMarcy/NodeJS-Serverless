@@ -1,4 +1,3 @@
-const https = require("https");
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
@@ -14,7 +13,7 @@ const logger = log4js.getLogger("obtenerGitUser");
 
 // usuario model
 const Usuario = require("../models/usuario");
-
+const validarJson = require('../middleware/validarJson');
 // Get an item By ID from the database
 router.post("/", auth, async (req, res) => {
   Usuario.getAll(usuarios => {
@@ -37,7 +36,7 @@ router.post("/", auth, async (req, res) => {
           rejectUnauthorized: false
         };
 
-        getJson(obtenerUsuarioGit, function(err, result) {
+        validarJson.getJson(obtenerUsuarioGit, function(err, result) {
           if (err) {
             logger.info(
               {
@@ -53,7 +52,7 @@ router.post("/", auth, async (req, res) => {
             });
           }
 
-          if (isEmptyObject(result)) {
+          if (validarJson.isEmptyObject(result)) {
             //logs
             logger.info({
               cgSalida: "CI-103",
@@ -87,7 +86,7 @@ router.post("/", auth, async (req, res) => {
               rejectUnauthorized: false
             };
 
-            getJson(bloquearUsuario, function(err, blockUser) {
+            validarJson.getJson(bloquearUsuario, function(err, blockUser) {
               if (err) {
                 //logs
                 logger.info(
@@ -156,33 +155,5 @@ router.post("/", auth, async (req, res) => {
     }
   });
 });
-
-function getJson(options, cb) {
-  https
-    .request(options, function(res) {
-      var body = "";
-
-      res.on("data", function(getData) {
-        body += getData;
-      });
-
-      res.on("end", function() {
-        let usuario = JSON.parse(body);
-        cb(null, usuario);
-      });
-      res.on("error", cb);
-    })
-    .on("error", cb)
-    .end();
-}
-// Verify that the return json is not empty
-function isEmptyObject(obj) {
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      return false;
-    }
-  }
-  return true;
-}
 
 module.exports = router;
