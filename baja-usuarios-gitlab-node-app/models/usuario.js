@@ -1,4 +1,5 @@
 const obtenerDatosFromFile = require("../middleware/obtenerDatosFromFile");
+const cifradoJson = require("../middleware/cifradoJson");
 
 module.exports = class Usuario {
   constructor(username, password, numEmpleado) {
@@ -27,4 +28,5 @@ module.exports = class Usuario {
   static getNumIntentosPorIp(cb) {
     obtenerDatosFromFile(cb, "numIntentosIp.json");
   }
+
 };

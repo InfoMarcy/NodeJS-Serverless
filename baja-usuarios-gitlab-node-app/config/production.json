@@ -1,5 +1,5 @@
 {
     "name": "WS Baja Usuarios Git Production",
-    "pathUrl": "",
+    "pathUrl": "/api/v4/users",
     "hostUrl": ""
 }

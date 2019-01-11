@@ -13,18 +13,62 @@ const bloqueoUsuariosService = require("../service/bloqueoUsuariosService");
 const bloqueoUsuariosServicePorUsername = require("../service/bloqueoUsuariosServicePorUsername");
 const dateFormat = require("dateformat");
 const now = new Date();
+const validarJson = require("../middleware/validarJson");
+//  const cifradoJson = require("../middleware/cifradoJson");
 
 module.exports = function(req, res, next) {
+
+  // var respuesta = cifradoJson.Decrypt_File();
+  // logger.info("respuesta => ", respuesta);
+
+
+
   logger.info("La llamada viene de la Ip => ", {
     ip: req.connection.remoteAddress
   });
 
   // validate the body of the request
   const { error } = validaciones.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error)
+    return res.status(400).send({
+      codigo: "400.BancaDigital-Usuarios-Gitlab.CI-104",
+      mensaje: "Los Datos de entrada no cumplen con el formato esperado",
+      folio: validarJson.generarFolio(req.connection.remoteAddress),
+      info:
+        "https://baz-developer.bancoazteca.com.mx/errors#400.BancaDigital-Usuarios-Gitlab.CI-104",
+      detalles: {
+        cgSalida: "CI-104",
+        descSalida: error.details[0].message
+      }
+    });
 
   const { ipError } = validaciones.validateIp(req.connection.remoteAddress);
-  if (ipError) return res.status(400).send(ipError.details[0].message);
+  if (ipError)
+    return res.status(400).send({
+      codigo: "400.BancaDigital-Usuarios-Gitlab.CI-104",
+      mensaje: "Los Datos de entrada no cumplen con el formato esperado",
+      folio: validarJson.generarFolio(req.connection.remoteAddress),
+      info:
+        "https://baz-developer.bancoazteca.com.mx/errors#400.BancaDigital-Usuarios-Gitlab.CI-104",
+      detalles: {
+        cgSalida: "CI-104",
+        descSalida: ipError.details[0].message
+      }
+    });
+
+    const userAndPassIguales  = validaciones.validateUsuarioPasswordNoIguales(req.body.username, req.body.password);
+    if (userAndPassIguales)
+      return res.status(400).send({
+        codigo: "400.BancaDigital-Usuarios-Gitlab.CI-104",
+        mensaje: "Los Datos de entrada no cumplen con el formato esperado",
+        folio: validarJson.generarFolio(req.connection.remoteAddress),
+        info:
+          "https://baz-developer.bancoazteca.com.mx/errors#400.BancaDigital-Usuarios-Gitlab.CI-104",
+        detalles: {
+          cgSalida: "CI-104",
+          descSalida: 'El Username y el password no pueden ser iguales'
+        }
+      });
 
   // get usuario por Ip
   let usuarioBloqueadoPorIp = bloqueoUsuariosService.getByIp(
@@ -83,8 +127,15 @@ module.exports = function(req, res, next) {
           descSalida: "No estas autorizado para consumir este recurso"
         });
         return res.status(403).send({
-          cgSalida: "CI-126",
-          descSalida: "No estas autorizado para consumir este recurso"
+          codigo: "403.BancaDigital-Usuarios-Gitlab.CI-116",
+          mensaje: "Error al realizar la operación",
+          folio: validarJson.generarFolio(req.connection.remoteAddress),
+          info:
+            "https://baz-developer.bancoazteca.com.mx/errors#403.BancaDigital-Usuarios-Gitlab.CI-116",
+          detalles: {
+            cgSalida: "CI-116",
+            descSalida: "No estas autorizado para consumir este recurso"
+          }
         });
       }
     }
@@ -104,8 +155,15 @@ module.exports = function(req, res, next) {
           descSalida: "No estas autorizado para consumir este recurso"
         });
         return res.status(403).send({
-          cgSalida: "CI-126",
-          descSalida: "No estas autorizado para consumir este recurso"
+          codigo: "403.BancaDigital-Usuarios-Gitlab.CI-116",
+          mensaje: "Error al realizar la operación",
+          folio: validarJson.generarFolio(req.connection.remoteAddress),
+          info:
+            "https://baz-developer.bancoazteca.com.mx/errors#403.BancaDigital-Usuarios-Gitlab.CI-116",
+          detalles: {
+            cgSalida: "CI-116",
+            descSalida: "No estas autorizado para consumir este recurso"
+          }
         });
       } else {
         Usuario.getAll(usuarios => {
@@ -181,19 +239,31 @@ module.exports = function(req, res, next) {
                 });
               }
 
-              return res.status(404).send({
-                cgSalida: "CI-104",
-                descSalida:
-                  "Error de autenticación, (El usuario y/o contraseña son incorrectos)"
+              return res.status(400).send({
+                codigo: "400.BancaDigital-Usuarios-Gitlab.CI-104",
+                mensaje: "Error de autenticación",
+                folio: validarJson.generarFolio(req.connection.remoteAddress),
+                info:
+                  "https://baz-developer.bancoazteca.com.mx/errors#400.BancaDigital-Usuarios-Gitlab.CI-104",
+                detalles: {
+                  cgSalida: "CI-104",
+                  descSalida: "El usuario y/o contraseña son incorrectos"
+                }
               });
             }
 
             // valida que la fecha de expiracion de la contraseña no exceda los 90 dias
             if (validaciones.validateDate(usuario.date)) {
               return res.status(400).send({
-                cgSalida: "CI-104",
-                descSalida:
-                  "Error de autenticación, (El usuario y/o contraseña son incorrectos)"
+                codigo: "400.BancaDigital-Usuarios-Gitlab.CI-104",
+                mensaje: "Error de autenticación",
+                folio: validarJson.generarFolio(req.connection.remoteAddress),
+                info:
+                  "https://baz-developer.bancoazteca.com.mx/errors#400.BancaDigital-Usuarios-Gitlab.CI-104",
+                detalles: {
+                  cgSalida: "CI-104",
+                  descSalida: "El usuario y/o contraseña son incorrectos"
+                }
               });
             }
 
@@ -267,26 +337,46 @@ module.exports = function(req, res, next) {
               }
 
               return res.status(400).send({
-                cgSalida: "CI-104",
-                descSalida:
-                  "Error de autenticación, (El usuario y/o contraseña son incorrectos)"
+                codigo: "400.BancaDigital-Usuarios-Gitlab.CI-104",
+                mensaje: "Error de autenticación",
+                folio: validarJson.generarFolio(req.connection.remoteAddress),
+                info:
+                  "https://baz-developer.bancoazteca.com.mx/errors#400.BancaDigital-Usuarios-Gitlab.CI-104",
+                detalles: {
+                  cgSalida: "CI-104",
+                  descSalida: "El usuario y/o contraseña son incorrectos"
+                }
               });
             }
             next();
           } catch (ex) {
             res.status(500).send({
-              cgSalida: "CI-112",
-              descSalida:
-                "Error de autenticación, no se pudo autenticar al usuario porque no se pudo obtener el recurso deseado"
+              codigo: "500.BancaDigital-Usuarios-Gitlab.CI-112",
+              mensaje: "Error al realizar la operación",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#500.BancaDigital-Usuarios-Gitlab.CI-112",
+              detalles: {
+                cgSalida: "CI-120",
+                descSalida:
+                  "No se pudo autenticar al usuario porque no se pudo obtener el recurso deseado"
+              }
             });
           }
         });
       }
     } catch (ex) {
       res.status(500).send({
-        cgSalida: "CI-112",
-        descSalida:
-          "Error de autenticación, no se pudo autenticar al usuario porque no se pudo obtener el recurso deseado"
+        codigo: "500.BancaDigital-Usuarios-Gitlab.CI-112",
+        mensaje: "Error al realizar la operación",
+        folio: validarJson.generarFolio(req.connection.remoteAddress),
+        info:
+          "https://baz-developer.bancoazteca.com.mx/errors#500.BancaDigital-Usuarios-Gitlab.CI-112",
+        detalles: {
+          cgSalida: "CI-120",
+          descSalida:
+            "No se pudo autenticar al usuario porque no se pudo obtener el recurso deseado"
+        }
       });
     }
   });

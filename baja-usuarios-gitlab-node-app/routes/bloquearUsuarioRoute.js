@@ -2,10 +2,9 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 
-
-const config = require('config');
-const pathUrl = config.get('pathUrl');
-const hostUrl = config.get('hostUrl'); 
+const config = require("config");
+const pathUrl = config.get("pathUrl");
+const hostUrl = config.get("hostUrl");
 
 //working with log files
 const log4js = require("log4js");
@@ -13,7 +12,7 @@ const logger = log4js.getLogger("obtenerGitUser");
 
 // usuario model
 const Usuario = require("../models/usuario");
-const validarJson = require('../middleware/validarJson');
+const validarJson = require("../middleware/validarJson");
 // Get an item By ID from the database
 router.post("/", auth, async (req, res) => {
   Usuario.getAll(usuarios => {
@@ -47,12 +46,60 @@ router.post("/", auth, async (req, res) => {
             );
 
             return res.status(500).send({
-              cgSalida: "CI-120",
-              descSalida: "Incidencia al conectarse con el servidor"
+              codigo: "500.BancaDigital-Usuarios-Gitlab.CI-120",
+              mensaje: "Error al realizar la operación",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#500.BancaDigital-Usuarios-Gitlab.CI-120",
+              detalles: {
+                cgSalida: "CI-120",
+                descSalida: "Incidencia al conectarse con el servidor"
+              }
             });
           }
 
-          if (validarJson.isEmptyObject(result)) {
+          if (result != null && result.message == "401 Unauthorized") {
+            //logs
+            logger.info({
+              cgSalida: "CI-115",
+              descSalida:
+                "No estas autorizado para consumir este recurso" + result
+            });
+
+            return res.status(401).send({
+              codigo: "401.BancaDigital-Usuarios-Gitlab.CI-115",
+              mensaje: "Error al realizar la operación",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#401.BancaDigital-Usuarios-Gitlab.CI-115",
+              detalles: {
+                cgSalida: "CI-115",
+                descSalida: "No estas autorizado para consumir este recurso"
+              }
+            });
+          } else if (
+            result != null &&
+            result.message == "403 Forbidden  - Your account has been blocked."
+          ) {
+            //logs
+            logger.info({
+              cgSalida: "CI-116",
+              descSalida:
+                "No estas autorizado para consumir este recurso" + result
+            });
+
+            return res.status(403).send({
+              codigo: "403.BancaDigital-Usuarios-Gitlab.CI-116",
+              mensaje: "Error al realizar la operación",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#403.BancaDigital-Usuarios-Gitlab.CI-116",
+              detalles: {
+                cgSalida: "CI-116",
+                descSalida: "No estas autorizado para consumir este recurso"
+              }
+            });
+          } else if (validarJson.isEmptyObject(result)) {
             //logs
             logger.info({
               cgSalida: "CI-103",
@@ -60,19 +107,34 @@ router.post("/", auth, async (req, res) => {
             });
 
             return res.status(404).send({
-              cgSalida: "CI-103",
-              descSalida: "No existe usuario en el sistema"
+              codigo: "404.BancaDigital-Usuarios-Gitlab.CI-103",
+              mensaje: "No se encontraron coincidencias",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#404.BancaDigital-Usuarios-Gitlab.CI-103",
+              detalles: {
+                cgSalida: "CI-103",
+                descSalida: "No existe información"
+              }
             });
           } else if (result[0].state === "blocked") {
             //logs
             logger.info({
               cgSalida: "CI-102",
-              descSalida: "El usuario ya se encontraba dado de baja"
+              descSalida: "El usuario ya se encontraba dado de baja",
+              folio: validarJson.generarFolio(req.connection.remoteAddress)
             });
 
             return res.status(202).send({
-              cgSalida: "CI-102",
-              descSalida: "El usuario ya se encontraba dado de baja"
+              codigo: "0",
+              mensaje: "Operación Exitosa",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#0.BancaDigital-Usuarios-Gitlab.CI-102",
+              detalles: {
+                cgSalida: "CI-102",
+                descSalida: "El usuario ya se encontraba dado de baja"
+              }
             });
           } else if (result[0].id !== null) {
             var bloquearUsuario = {
@@ -98,8 +160,15 @@ router.post("/", auth, async (req, res) => {
                 );
 
                 return res.status(500).send({
-                  cgSalida: "CI-120",
-                  descSalida: "Incidencia al conectarse con el servidor"
+                  codigo: "500.BancaDigital-Usuarios-Gitlab.CI-120",
+                  mensaje: "Error al realizar la operación",
+                  folio: validarJson.generarFolio(req.connection.remoteAddress),
+                  info:
+                    "https://baz-developer.bancoazteca.com.mx/errors#500.BancaDigital-Usuarios-Gitlab.CI-120",
+                  detalles: {
+                    cgSalida: "CI-120",
+                    descSalida: "Incidencia al conectarse con el servidor"
+                  }
                 });
               }
 
@@ -115,8 +184,15 @@ router.post("/", auth, async (req, res) => {
                 });
 
                 return res.status(200).send({
-                  cgSalida: "CI-101",
-                  descSalida: "Baja aplicada exitosamente"
+                  codigo: "0",
+                  mensaje: "Operación Exitosa",
+                  folio: validarJson.generarFolio(req.connection.remoteAddress),
+                  info:
+                    "https://baz-developer.bancoazteca.com.mx/errors#0.BancaDigital-Usuarios-Gitlab.CI-101",
+                  detalles: {
+                    cgSalida: "CI-101",
+                    descSalida: "Baja aplicada exitosamente"
+                  }
                 });
               } else if (!blockUser) {
                 //logs
@@ -126,8 +202,15 @@ router.post("/", auth, async (req, res) => {
                 });
 
                 return res.status(500).send({
-                  cgSalida: "CI-120",
-                  descSalida: "Incidencia al realizar la operacion"
+                  codigo: "500.BancaDigital-Usuarios-Gitlab.CI-120",
+                  mensaje: "Error al realizar la operación",
+                  folio: validarJson.generarFolio(req.connection.remoteAddress),
+                  info:
+                    "https://baz-developer.bancoazteca.com.mx/errors#500.BancaDigital-Usuarios-Gitlab.CI-120",
+                  detalles: {
+                    cgSalida: "CI-120",
+                    descSalida: "Incidencia al conectarse con el servidor"
+                  }
                 });
               }
             });
@@ -139,21 +222,34 @@ router.post("/", auth, async (req, res) => {
             });
 
             return res.status(404).send({
-              cgSalida: "CI-103",
-              descSalida: "No existe usuario en el sistema"
+              codigo: "404.BancaDigital-Usuarios-Gitlab.CI-103",
+              mensaje: "No se encontraron coincidencias",
+              folio: validarJson.generarFolio(req.connection.remoteAddress),
+              info:
+                "https://baz-developer.bancoazteca.com.mx/errors#404.BancaDigital-Usuarios-Gitlab.CI-103",
+              detalles: {
+                cgSalida: "CI-103",
+                descSalida: "No existe información"
+              }
             });
           }
         });
       } else {
         return res.status(500).send({
-          cgSalida: "CI-120",
-          descSalida: "Incidencia al obtener el token"
+          codigo: "500.BancaDigital-Usuarios-Gitlab.CI-120",
+          mensaje: "Error al realizar la operación",
+          folio: validarJson.generarFolio(req.connection.remoteAddress),
+          info:
+            "https://baz-developer.bancoazteca.com.mx/errors#500.BancaDigital-Usuarios-Gitlab.CI-120",
+          detalles: {
+            cgSalida: "CI-120",
+            descSalida: "Incidencia al conectarse con el servidor"
+          }
         });
       }
     } catch (err) {
-      console.log(err);
+      logger.info("Incidencia al realizar la Operacion ", err);
     }
   });
 });
-
 module.exports = router;

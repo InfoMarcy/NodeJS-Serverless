@@ -21,6 +21,19 @@ module.exports = {
   //valida la contraseña contra el hash
   validatePassword: function(pass1, pass2) {
     if (pass1.toString().trim() === pass2.toString().trim()) {
+
+      pass1 = "";
+      pass1 = "";
+      return true;
+    } else {
+      pass1 = "";
+      pass1 = "";
+      return false;
+    }
+  },
+
+  validateUsuarioPasswordNoIguales: function(user, pass) {
+    if (user.toString().trim() === pass.toString().trim()) {
       return true;
     } else {
       return false;
@@ -90,13 +103,6 @@ module.exports = {
 
   validateFechaBloqueo: function(fecha) {
 
-    console.log("validateFechaBloqueo fecha => ", fecha);
-    console.log("validateFechaBloqueo fecha => ", now);
-
-    
-
-
-
     // Convert both dates to milliseconds
     let one_minute = 1000 * 60;
     // convert the date to be use to compare the days
@@ -126,7 +132,6 @@ module.exports = {
       return false;
     }
   }
+
+
 };
-
-
-

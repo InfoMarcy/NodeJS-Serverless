@@ -10,8 +10,7 @@ const log4js = require("log4js");
 const logger = log4js.getLogger();
 
 // Helmet helps you secure your Express apps by setting various HTTP headers
-const helmet = require('helmet')
-
+const helmet = require("helmet");
 
 module.exports = function(app) {
   app.use(express.json()); // enable json req.body
@@ -27,6 +26,11 @@ module.exports = function(app) {
       format: ":method :url"
     })
   );
+
   // to handle the errors
   app.use(error);
+
+
 };
+
+
