@@ -14,12 +14,15 @@ const bloqueoUsuariosServicePorUsername = require("../service/bloqueoUsuariosSer
 const dateFormat = require("dateformat");
 const now = new Date();
 const validarJson = require("../middleware/validarJson");
-//  const cifradoJson = require("../middleware/cifradoJson");
+  // const cifradoJson = require("../middleware/cifradoJson");
 
 module.exports = function(req, res, next) {
 
-  // var respuesta = cifradoJson.Decrypt_File();
-  // logger.info("respuesta => ", respuesta);
+  // let primeraVariable = cifradoJson.Decrypt_File();
+
+  // let segundaVariable = JSON.parse(primeraVariable);
+
+  // logger.info("respuesta username=> ", segundaVariable[0].username);
 
 
 

@@ -3,21 +3,9 @@ const express = require("express");
 const app = express(); // call the express function which return an object
 const config = require("config");
 
-
-const https = require("https");
-const fs = require("fs");
-// const getRuta = require("./middleware/getRuta");
-
-// var options = {
-//   key: fs.readFileSync(getRuta.getRuta("ssl", "localhost.key")),
-//   cert: fs.readFileSync(getRuta.getRuta("ssl", "localhost.cert")),
-//   requestCert: false,
-//   rejectUnauthorized: false
-// };
-
-
-require("./controller/logsController")();
-require("./controller/routesController")( app);
+require("./controller/logs")();
+require("./controller/appController")(app);
+require('./startup/db')();
 
 //working with log files
 const log4js = require("log4js");
@@ -34,5 +22,4 @@ const server = app.listen(port, () =>
     )}.`
   )
 );
-
 module.exports = server;

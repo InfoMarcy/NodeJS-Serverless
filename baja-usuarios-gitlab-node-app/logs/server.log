@@ -1,0 +1,108 @@
+[# 2019-01-11 13:10:23,122 INFO 14840 auth La llamada viene de la Ip =>  { ip: '::1' } #]
+[# 2019-01-11 13:10:23,127 INFO 14840 auth usuario bloqueado por Ip =>  0 #]
+[# 2019-01-11 13:10:23,128 INFO 14840 auth Usuario bloqueado por username =>  0 #]
+[# 2019-01-11 13:10:23,418 INFO 14840 obtenerDatosFromArchivoEncriptado jsonDatos =>  [ { username: 'usuarioCyaal',
+    password:
+     '854d23547a42a66121b89eca21ce2f19194d674ac7ad766591d76283c0e21403',
+    token: '23MwdKpx_1PBLP3Lhj7F',
+    date: '2018-12-04 13:09:52' },
+  { username: 'usuarioMonitoreo',
+    password:
+     'f810bba14ee5ba6c57d7242e2d60d8b4954f826731c4cc3de112bbb8127fffde',
+    token: '23MwdKpx_1PBLP3Lhj7F',
+    date: '2018-12-04 13:09:52' } ] #]
+[# 2019-01-11 13:10:23,420 INFO 14840 auth { cgSalida: 'CI-104',
+  descSalida:
+   'Error de autenticación, (El usuario y/o contraseña son incorrectos)' } #]
+[# 2019-01-11 13:10:23,420 INFO 14840 auth ============================================== usuario no valido ============================================== #]
+[# 2019-01-11 13:10:23,422 INFO 14840 Json NumIntentos Service Actualizacion de numero de intento exitosa #]
+[# 2019-01-11 13:10:23,430 INFO 14840 writeDataToJsonFile Guardado correctamente =>  [ { numIntentos: 4,
+    username: 'userCyaal',
+    date: '2019-01-11 13:10:12',
+    ip: '::1' } ] #]
+[# 2019-01-11 13:10:24,419 INFO 14899 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:10:55,531 INFO 14899 auth La llamada viene de la Ip =>  { ip: '::1' } #]
+[# 2019-01-11 13:10:55,537 INFO 14899 auth usuario bloqueado por Ip =>  0 #]
+[# 2019-01-11 13:10:55,538 INFO 14899 auth Usuario bloqueado por username =>  0 #]
+[# 2019-01-11 13:10:55,980 INFO 14899 obtenerDatosFromArchivoEncriptado jsonDatos =>  [ { username: 'usuarioCyaal',
+    password:
+     '854d23547a42a66121b89eca21ce2f19194d674ac7ad766591d76283c0e21403',
+    token: '23MwdKpx_1PBLP3Lhj7F',
+    date: '2018-12-04 13:09:52' },
+  { username: 'usuarioMonitoreo',
+    password:
+     'f810bba14ee5ba6c57d7242e2d60d8b4954f826731c4cc3de112bbb8127fffde',
+    token: '23MwdKpx_1PBLP3Lhj7F',
+    date: '2018-12-04 13:09:52' } ] #]
+[# 2019-01-11 13:10:55,982 INFO 14899 auth { cgSalida: 'CI-104',
+  descSalida:
+   'Error de autenticación, (El usuario y/o contraseña son incorrectos)' } #]
+[# 2019-01-11 13:10:55,982 INFO 14899 auth ============================================== usuario no valido ============================================== #]
+[# 2019-01-11 13:10:55,985 INFO 14899 Json NumIntentos Service Actualizacion de numero de intento exitosa #]
+[# 2019-01-11 13:10:55,986 INFO 14899 Bloquear usuario Service Usuario bloqueado exitosamente #]
+[# 2019-01-11 13:10:55,993 INFO 14899 writeDataToJsonFile Guardado correctamente =>  [ { numIntentos: 5,
+    username: 'userCyaal',
+    date: '2019-01-11 13:10:24',
+    ip: '::1' } ] #]
+[# 2019-01-11 13:10:55,994 INFO 14899 writeDataToJsonFile Guardado correctamente =>  [ { usuario: 'userCyaal',
+    bloqueado: true,
+    fecha_bloqueo: '2019-01-11 13:10:24',
+    ip: '::1' } ] #]
+[# 2019-01-11 13:10:56,917 INFO 14928 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:11:00,895 INFO 14934 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:11:03,240 INFO 14934 auth La llamada viene de la Ip =>  { ip: '::1' } #]
+[# 2019-01-11 13:11:03,245 INFO 14934 auth usuario bloqueado por Ip =>  0 #]
+[# 2019-01-11 13:11:03,245 INFO 14934 auth Usuario bloqueado por username =>  { usuario: 'userCyaal',
+  bloqueado: true,
+  fecha_bloqueo: '2019-01-11 13:10:24',
+  ip: '::1' } #]
+[# 2019-01-11 13:11:03,248 INFO 14934 validaciones El Usuario se encuentra bloqueado 0... #]
+[# 2019-01-11 13:11:03,248 INFO 14934 validaciones El Usuario se encuentra bloqueado 1... #]
+[# 2019-01-11 13:11:03,248 INFO 14934 auth { cgSalida: 'CI-126',
+  descSalida: 'No estas autorizado para consumir este recurso' } #]
+[# 2019-01-11 13:11:37,203 INFO 14998 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:11:43,328 INFO 15013 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:11:45,393 INFO 15030 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:11:49,188 INFO 15030 auth La llamada viene de la Ip =>  { ip: '::1' } #]
+[# 2019-01-11 13:11:49,196 INFO 15030 auth usuario bloqueado por Ip =>  0 #]
+[# 2019-01-11 13:11:49,197 INFO 15030 auth Usuario bloqueado por username =>  0 #]
+[# 2019-01-11 13:11:49,341 INFO 15030 obtenerDatosFromArchivoEncriptado jsonDatos =>  [ { username: 'usuarioCyaal',
+    password:
+     '854d23547a42a66121b89eca21ce2f19194d674ac7ad766591d76283c0e21403',
+    token: '23MwdKpx_1PBLP3Lhj7F',
+    date: '2018-12-04 13:09:52' },
+  { username: 'usuarioMonitoreo',
+    password:
+     'f810bba14ee5ba6c57d7242e2d60d8b4954f826731c4cc3de112bbb8127fffde',
+    token: '23MwdKpx_1PBLP3Lhj7F',
+    date: '2018-12-04 13:09:52' } ] #]
+[# 2019-01-11 13:11:49,343 INFO 15030 auth { cgSalida: 'CI-104',
+  descSalida:
+   'Error de autenticación, (El usuario y/o contraseña son incorrectos)' } #]
+[# 2019-01-11 13:11:49,343 INFO 15030 auth ============================================== usuario no valido ============================================== #]
+[# 2019-01-11 13:11:49,346 INFO 15030 Json NumIntentos Service Numero de intento por ip creado exitosamente #]
+[# 2019-01-11 13:11:49,352 INFO 15030 writeDataToJsonFile Guardado correctamente =>  [ { numIntentos: 1,
+    date: '2019-01-11 13:11:45',
+    username: 'userCyaal',
+    ip: '::1' } ] #]
+[# 2019-01-11 13:11:49,781 INFO 15039 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:14:15,207 INFO 15182 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:14:22,059 INFO 15205 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:14:58,521 INFO 15267 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:14:59,786 INFO 15277 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:15:58,725 INFO 15432 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:00,084 INFO 15445 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:00,854 INFO 15448 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:02,147 INFO 15454 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:07,204 INFO 15468 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:17,992 INFO 15482 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:18,556 INFO 15488 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:16:40,200 INFO 15552 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:17:01,818 INFO 15565 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:24:22,321 INFO 16289 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:24:23,122 INFO 16293 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:24:37,672 INFO 16348 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:24:39,397 INFO 16360 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:24:40,580 INFO 16366 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:24:42,797 INFO 16370 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]
+[# 2019-01-11 13:32:31,086 INFO 16769 index La applicacion WS Baja Usuarios Git esta corriendo en el puerto: 3000 y en el ambiente de: development. #]

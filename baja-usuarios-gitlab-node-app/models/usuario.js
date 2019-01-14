@@ -1,5 +1,5 @@
 const obtenerDatosFromFile = require("../middleware/obtenerDatosFromFile");
-const cifradoJson = require("../middleware/cifradoJson");
+const obtenerDatosFromArchivoEncriptado = require('../middleware/obtenerDatosFromArchivoEncriptado');
 
 module.exports = class Usuario {
   constructor(username, password, numEmpleado) {
@@ -9,9 +9,9 @@ module.exports = class Usuario {
   }
 
   // method to get all records from the class
-  static getAll(cb) {
-    obtenerDatosFromFile(cb, "usuarios.json");
-  }
+  // static getAll(cb) {
+  //   obtenerDatosFromFile(cb, "usuarios.json");
+  // }
 
   static getAllIps(cb) {
     obtenerDatosFromFile(cb, "ips.json");
@@ -28,5 +28,11 @@ module.exports = class Usuario {
   static getNumIntentosPorIp(cb) {
     obtenerDatosFromFile(cb, "numIntentosIp.json");
   }
+
+
+  static getAll(cb) {
+    obtenerDatosFromArchivoEncriptado(cb);
+  }
+
 
 };
