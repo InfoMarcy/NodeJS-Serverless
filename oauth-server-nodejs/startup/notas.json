@@ -1,0 +1,25 @@
+[
+  {
+    "Install oauth2-server ": "npm install node-oauth2-server --save"
+  },
+
+  {
+    "url": "http://localhost:3000/oauth/usuario/register",
+    "email": "marci.garcia@bancoazteca.com",
+    "password": "1234567890",
+    "nombre": "Marcy",
+    "apellidoPaterno": "Garcia",
+    "apellidoMaterno": "Lorenzo"
+  },
+
+  {
+    "url": "http://localhost:3000/oauth/app/register",
+	"email": "marci.garcia@bancoazteca.com",
+    "password": "1234567890",
+	"redirectUri":"bancoazteca.com?cb",
+	"appName":"bancaDigital",
+	"appUri":"bancoazteca.com",
+	"appDescription":"Bank of mexico"
+}
+
+]

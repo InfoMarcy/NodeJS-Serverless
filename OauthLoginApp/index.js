@@ -11,6 +11,7 @@ require('./startup/db')();
 const log4js = require("log4js");
 const logger = log4js.getLogger("index");
 
+
 // Environment variable
 const port = process.env.PORT || 3000; //listen on a given port
 const server = app.listen(port, () =>
@@ -22,4 +23,5 @@ const server = app.listen(port, () =>
     )}.`
   )
 );
+
 module.exports = server;

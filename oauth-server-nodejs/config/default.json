@@ -1,0 +1,10 @@
+{
+    "name": "Oath Login App",
+    "db": "mongodb://localhost/oauth2_db",
+    "GOOGLE_CLIENT_ID": "594704200379-gugija48er0bdfmbkm9iqu91k5is9jlr.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET": "mVWRwGYvzs35hcuu2fSP7P8y",
+    "cookieKey": "Login_R^skqGC]J7NZup>@_Auth",
+    "JWTSecretKey":  "tz]hw.y7t:&MT8x+",
+    "SECRET_KEY": "n/cAH'38(p^$JL5X",
+    "USER_ID": ""
+}

@@ -1,6 +1,7 @@
 const express = require("express");
 //middleware for working with errore
 const error = require("../middleware/error");
+const cors = require('cors')
 
 const bloquearUsuarioGit = require("../routes/bloquearUsuarioRoute"); // block usuario
 const desbloquearUsuarioGit = require("../routes/desbloquearUsuarioRoute"); // unblock usuario
@@ -27,6 +28,7 @@ module.exports = function(app) {
     })
   );
 
+  app.use(cors());
   // to handle the errors
   app.use(error);
 
