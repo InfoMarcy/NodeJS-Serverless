@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const hashPassword = require("../../middleware/hashPassword");
 //Cifrado
 const crypto = require("crypto-js");
+const Joi = require('joi');
 
 const OAuthUsersSchema = new Schema({
   email: {
@@ -81,7 +82,25 @@ OAuthUsersSchema.static("authenticate", function(email, password, cb) {
   });
 });
 
-mongoose.model("oAuth_Users", OAuthUsersSchema);
 
+mongoose.model("oAuth_Users", OAuthUsersSchema);
 const OAuthUsersModel = mongoose.model("oAuth_Users");
-module.exports = OAuthUsersModel;
+
+// validate Customer
+function validateOAuthUser(usuario){
+  // if invalid 400  - Bad Request // joi input validation
+ const schema = {
+  email: Joi.string().min(3).max(50).email(),
+  password: Joi.string().min(10).max(1024),
+  nombre:Joi.string().min(3).max(50),
+  apellidoPaterno:Joi.string().min(3).max(50),
+  apellidoMaterno:Joi.string().min(3).max(50),
+ };
+ return Joi.validate(usuario, schema);
+};
+
+
+exports.validateUser = validateOAuthUser;
+exports = OAuthUsersModel;
+
+

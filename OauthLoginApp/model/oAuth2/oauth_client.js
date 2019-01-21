@@ -10,12 +10,9 @@ const OAuthClientsSchema = new Schema({
   appName: {type: String, required: true},
   appUri: {type: String, required: true},
   appDescription: {type: String},
-  email: {
+  userId: {
     type: String,
-    required: true,
-    trim: true,
-    minlength: 5,
-    maxlength: 50
+    required: true
   }
 
 });

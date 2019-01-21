@@ -5,6 +5,7 @@ var jwt = require('jwt-simple');
 
 var functions = {
     authenticate: function(req, res) {
+   
         User.findOne({
             name: req.body.name
         }, function(err, user){
@@ -18,8 +19,7 @@ var functions = {
                 user.comparePassword(req.body.password, function(err, isMatch){
                     if(isMatch && !err) {
                         var token = jwt.encode(user, config.get('SECRET_KEY'));
-                        res.json({success: true, token: token});
-                        config.get('USER_ID') = user._id;
+                        res.json({success: true, token: token, userId: user._id});
                     } else {
                         return res.status(403).send({success: false, msg: 'Authenticaton failed, wrong password.'});
                     }
