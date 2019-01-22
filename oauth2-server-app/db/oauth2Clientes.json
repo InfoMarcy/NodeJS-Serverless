@@ -1,0 +1,12 @@
+[
+  {
+    "clientId": "5c473d29537b2e4a24066228",
+    "clientSecret": "32cfa9b42544b3e61eeb4cbbb686121470a00c35baced1b5544e1212ea51004b",
+    "userId": "5c464002ae48a21452fcb067",
+    "redirectUri": "https://bancoazteca.com?cb",
+    "appName": "Banco azteca credito",
+    "appUri": "https://bancoazteca.com",
+    "appDescription": "Bank Of mexico",
+    "grants": []
+  }
+]

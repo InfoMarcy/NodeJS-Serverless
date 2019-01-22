@@ -1,0 +1,1 @@
+exports.isAuthenticated = passport.authenticate(['basic', 'bearer'], { session : false });

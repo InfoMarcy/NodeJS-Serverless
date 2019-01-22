@@ -1,0 +1,9 @@
+{
+    "name": "Oath2 Login Server App",
+    "db": "mongodb://localhost/oauth2_serverdb",
+    "cookieKey": "Login_R^skqGC]J7NZup>@_Auth",
+    "JWTSecretKey":  "tz]hw.y7t:&MT8x+",
+    "SECRET_KEY": "n/cAH'38(p^$JL5X",
+    "SECRET_TOKEN": "Tga+yP/46.BE8/6S",
+    "SECRET_CODE": "%z}g@P=u4T*G·E*/"
+}
